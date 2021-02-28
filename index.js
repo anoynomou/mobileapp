@@ -1,6 +1,6 @@
 var express = require('express');
 var App = express();
-var PORT = 3001 || process.env.PORT
+var PORT =  process.env.PORT || 3001;
 var Http = require('http').createServer(App).listen(PORT);
 var nodemailer = require('nodemailer');
 
