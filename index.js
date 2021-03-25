@@ -4,14 +4,10 @@ var PORT =  process.env.PORT || 3001;
 var Http = require('http').createServer(App).listen(PORT);
 var nodemailer = require('nodemailer');
 
-
-///DEMO
-/*
-localhost:3001/loremoxi9985@gmail.com/kikobor/whatsup
-*/
-//
+var cors = require('cors');
 
 
+App.use(cors({ origin: true }));
 
 var transporter = nodemailer.createTransport({
   service: 'gmail',
@@ -35,7 +31,6 @@ var mailOptions = {
   subject: op1,
   text: op2
 };
-
 transporter.sendMail(mailOptions, function(error, info){
   if (error) {
     res.sendStatus(404);
@@ -44,9 +39,12 @@ transporter.sendMail(mailOptions, function(error, info){
   }
 
 }); 
-}
+}else{console.log('val not given')}
 
+})
 
+App.all('*',(req,res)=>{
+res.send('Dont Try')
 
 })
 
